@@ -1,0 +1,15 @@
+<h2>Here are your product details!</h2>
+
+<img src = "<%= @product.image %>">
+
+<ol>
+  <h3><%= @product.name %></h3>
+  <h3><%= @product.description %></h3>
+  <h3>Price: $<%= @product.price %></h3>
+  <h3>Tax: $<%= @product.tax %></h3>
+  <h3>Total: $<%= @product.total %></h3>
+</ol>
+
+<p><%= link_to "Edit your product", "/products/#{@product.id}/edit" %></p>
+<p><%= link_to "Back to all products", "/products" %></p>
+<p><%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %></p>

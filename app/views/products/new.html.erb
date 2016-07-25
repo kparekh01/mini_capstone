@@ -1,0 +1,24 @@
+
+<h1>Welcome, please enter the information below to create a new product.</h1>
+
+
+
+<h3>
+<%= form_tag("/products", method: "post") do %> 
+
+  <%= label_tag(:name, "Enter product name:") %>
+  <%= text_field_tag(:name) %>
+
+  <%= label_tag(:price, "Enter product price:") %>
+  <%= text_field_tag(:price) %>
+
+  <%= label_tag(:image, "Enter product image:") %>
+  <%= text_field_tag(:image) %>
+
+  <%= label_tag(:description, "Enter product description:") %>
+  <%= text_field_tag(:description) %>
+
+
+  <%= submit_tag("Create My Product!") %>
+<% end %>
+</h3>
