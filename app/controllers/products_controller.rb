@@ -1,6 +1,13 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    if params[:sort]
+      @products = Product.order(params[:sort])
+    elsif params[:desc]
+      @products = Product.order(params[:desc] => :desc)
+    elsif params[:discount]
+      @products = Product.where("#{params[:discount]} < ?", 3000)
+    end
   end
 
   def new
@@ -15,7 +22,11 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find_by(id: params[:id])
+    if params[:id] == "random"
+      @product = Product.all.sample
+    else
+      @product = Product.find_by(id: params[:id])
+    end
   end
 
   def edit
