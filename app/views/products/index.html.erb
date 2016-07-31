@@ -3,7 +3,6 @@
 <div class="container">
 
 <% @products.each do |product| %>
-  <img src = "<%= product.image %>">
   <h1><%= link_to product.name, "/products/#{product.id}"%></h1>
   <h1><%= product.description %></h1>
   <h1><%= product.price %></h1>

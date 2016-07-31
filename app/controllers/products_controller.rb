@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(name: params[:name], price: params[:price], image: params[:image], description: params[:description])
+    @product = Product.new(name: params[:name], price: params[:price], description: params[:description])
     @message = "Your product has been created successfully!"
     @product.save
     flash[:success] = "Product was successfully created!"
@@ -51,4 +51,8 @@ class ProductsController < ApplicationController
     redirect_to "/products/"
   end
 
+  def search
+    @products = Product.where("name LIKE ?", "%#{params[:search]}%")
+    render 'index.html.erb'
+  end
 end

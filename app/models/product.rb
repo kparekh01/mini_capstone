@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  belongs_to :supplier
+
   def  sales_message
     price.to_f < 2.0 ? "Discount item!" : "Not on sale!"
   end

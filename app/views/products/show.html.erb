@@ -1,8 +1,7 @@
 <h2>Here are your product details!</h2>
 
-<img src = "<%= @product.image %>">
-
 <ol>
+  <h3><%= @product.supplier.name %></h3>
   <h3><%= @product.name %></h3>
   <h3><%= @product.description %></h3>
   <h3>Price: $<%= @product.price %></h3>
