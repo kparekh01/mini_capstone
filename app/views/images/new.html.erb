@@ -1,0 +1,10 @@
+<h1>Please add images to your products here!</h1>
+
+<%= form_tag("/images", method: "post") do %>
+
+  <h3><%= label_tag(:image_url, "Enter your image_url:") %></h3>
+  <h3><%= text_field_tag(:image_url) %></h3>
+  <%= collection_select :product, :product_id, Product.all, :id, :name %>
+  <h3><%= submit_tag("Add image to product!") %></h3>
+
+<% end %>

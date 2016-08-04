@@ -7,6 +7,9 @@ class ProductsController < ApplicationController
       @products = Product.order(params[:desc] => :desc)
     elsif params[:discount]
       @products = Product.where("#{params[:discount]} < ?", 3000)
+    elsif params[:category]
+      category = Category.find_by(name: params[:category])
+      @products = category.products
     end
   end
 

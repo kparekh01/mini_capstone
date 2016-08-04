@@ -1,6 +1,9 @@
 <h2>Here are your product details!</h2>
 
 <ol>
+  <h3><% @product.images.all.each do |image| %></h3>
+  <h3><img src="<%= image.image_url %>" alt=""></h3>
+  <h3><% end %></h3>
   <h3><%= @product.supplier.name %></h3>
   <h3><%= @product.name %></h3>
   <h3><%= @product.description %></h3>
@@ -12,3 +15,17 @@
 <p><%= link_to "Edit your product", "/products/#{@product.id}/edit" %></p>
 <p><%= link_to "Back to all products", "/products" %></p>
 <p><%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %></p>
+
+
+<p>This product belongs to the following categories:</p>
+<p><% @product.categories.each do |category| %></p>
+<p><%= category.name %></p>
+<p><% end %></p>
+
+
+<%=form_tag("/orders", method: "post") do %>
+<%= label_tag(:quantity, "Quantity:") %>
+<%= text_field_tag(:quantity) %>
+<%= hidden_field_tag(:product_id, @product.id) %>
+<%= submit_tag("Add to cart!") %>
+<% end %>
