@@ -1,0 +1,17 @@
+<h1>Checkout Page:</h1>
+
+<div class="container">
+
+<% @carted.each do |cart| %>
+<h2><%= cart.product.name %></h2>
+<h3><img src="<%= cart.product.images.first.image_url %>" alt=""></h3>
+<h2><%= cart.product.price %></h2>
+<h2><%= cart.quantity %></h2>
+<h2><%= link_to "Delete this product from your cart", "/carted_products/#{cart.id}", method: "patch"%></h2>
+<% end %>
+
+
+<%=form_tag("/orders", method: "post") do %>
+<%= submit_tag("Buy Now!") %>
+<% end %>
+</div>

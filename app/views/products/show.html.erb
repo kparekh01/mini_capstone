@@ -23,7 +23,7 @@
 <p><% end %></p>
 
 
-<%=form_tag("/orders", method: "post") do %>
+<%=form_tag("/carted_products", method: "post") do %>
 <%= label_tag(:quantity, "Quantity:") %>
 <%= text_field_tag(:quantity) %>
 <%= hidden_field_tag(:product_id, @product.id) %>
