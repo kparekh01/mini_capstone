@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+  before_action :authorize_admin!, except: [:index, :show, :search]
+
+
   def index
     @products = Product.all
     if params[:sort]
@@ -51,7 +54,6 @@ class ProductsController < ApplicationController
   def delete
     @product = Product.find_by(id: params[:id])
     @product.destroy
-    redirect_to "/products/"
   end
 
   def search

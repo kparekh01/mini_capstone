@@ -7,6 +7,12 @@ class Product < ActiveRecord::Base
   has_many :carted_products
   has_many :orders, through: :carted_products
 
+validates :name, presence: true
+validates :description, length: { maximum: 500 }
+validates :price, numericality: true
+
+
+
   def  sales_message
     price.to_f < 2.0 ? "Discount item!" : "Not on sale!"
   end

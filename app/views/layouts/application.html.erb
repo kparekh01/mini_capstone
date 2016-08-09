@@ -31,12 +31,16 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+          <% if current_user %>
         <li><a href="/carted_products">Checkout</a></li>
+        <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Home", '/products' %></li>
+              <% if current_user && current_user.admin %>
             <li><%= link_to "Create", '/products/new' %></li>
+            <% end %>
             <% if current_user %>
             <li><%= link_to "Logout", "/logout", method: 'delete' %></li>
             <% else %>

@@ -16,5 +16,9 @@ class OrdersController < ApplicationController
 
   def show
     @order= Order.find_by(id: params[:id])
+    if @order.user_id == current_user.id
+      @carted_products = @order.carted_products
+    else
+      redirect_to '/products'
   end
 end

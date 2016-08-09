@@ -1,7 +1,7 @@
 <h1>Checkout Page:</h1>
 
 <div class="container">
-
+<% if current_user %>
 <% @carted.each do |cart| %>
 <h2><%= cart.product.name %></h2>
 <h3><img src="<%= cart.product.images.first.image_url %>" alt=""></h3>
@@ -13,5 +13,7 @@
 
 <%=form_tag("/orders", method: "post") do %>
 <%= submit_tag("Buy Now!") %>
+<% end %>
+
 <% end %>
 </div>

@@ -11,11 +11,12 @@
   <h3>Tax: $<%= @product.tax %></h3>
   <h3>Total: $<%= @product.total %></h3>
 </ol>
-
-<p><%= link_to "Edit your product", "/products/#{@product.id}/edit" %></p>
 <p><%= link_to "Back to all products", "/products" %></p>
-<p><%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %></p>
 
+<% if current_user && current_user.admin %>
+<p><%= link_to "Edit your product", "/products/#{@product.id}/edit" %></p>
+<p><%= link_to "Delete this product", "/products/#{@product.id}", method: :delete %></p>
+<% end %>
 
 <p>This product belongs to the following categories:</p>
 <p><% @product.categories.each do |category| %></p>

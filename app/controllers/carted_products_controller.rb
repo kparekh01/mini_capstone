@@ -1,6 +1,8 @@
 class CartedProductsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
+    if current_user
     @carted = CartedProduct.new(
     user_id: current_user.id,
     product_id: params[:product_id],
@@ -9,6 +11,7 @@ class CartedProductsController < ApplicationController
     )
     @carted.save
     redirect_to "/carted_products"
+    end
   end
 
 
